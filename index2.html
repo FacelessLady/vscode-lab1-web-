@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Кнопка счетчик</title>
+  <script>
+    // Инициализация счетчика
+    var count = 0;
+
+    // Функция, которая уменьшает счетчик на "1" и обновляет значение на странице
+    function decreaseCount() {
+      count--;
+      document.getElementById("counter").textContent = count;
+    }
+  </script>
+</head>
+<body>
+  <h1>Кнопка счетчик</h1>
+  <p id="counter">0<p>
+  <button id="decreaseButton">Уменьшить счетчик</button>
+
+  <script>
+    // Присваиваем функцию decreaseCount кнопке с помощью addEventListener
+    document.getElementById("decreaseButton").addEventListener("click", decreaseCount);
+  </script>
+</body>
+</html>

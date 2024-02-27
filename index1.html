@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Счетчик</title>
+</head>
+
+<body>
+  <h1>Кнопка счетчик</h1>
+  <button id="counterButton" onclick="incrementCounter()">Увеличить счетчик</button>
+  <!--кнопка счетчика имеет идентификатор "counterButton"-->
+  <p id="counterValue">0</p>    <!--выводится в элемент <p> с идентификатором "counterValue"-->
+ 
+  <script>
+    let counter = 0;
+    //incrementCounter будет вызываться при нажатии на кнопку и увеличивать значение счетчика на 1
+    function incrementCounter() {
+      counter++;
+      document.getElementById("counterValue").innerText = counter;
+    }  
+  </script>
+</body>
+
+</html>
+ 

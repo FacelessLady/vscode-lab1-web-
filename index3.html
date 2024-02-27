@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Форма аутентификации</title>
+</head>
+
+<body>
+    <form id="login">
+        <!-- label(метка) устанавливает связь между меткой-текстом(<input>).Помогает изменять элементы формы с помощью щелчка мыши-->
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+        <input type="button" value="Reset" onclick="resetForm()">
+    </form>
+
+    <script>
+        // Получить элемент формы
+        const form = document.getElementById("login");
+
+        // скрипт отправки данных формы с помощью listener submit. 
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();            //Предотвратить отправку формы
+
+            // Введенное имя пользователя и пароль
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // валидация введенных данных
+            if (username === "admin" && password === "admin") {
+                showMessage("Вход в систему");
+            } else {
+                showMessage("Ошибка! Неправильное имя пользователя или пароль.");
+            }
+        });
+
+        // Функция отображения сообщений
+        function showMessage(message) {
+            alert(message);
+        }
+
+        // Функция сброса формы
+        function resetForm() {
+            form.reset();
+        }
+
+        // Функция сохранения учетных данных для входа в локальное хранилище
+        function saveCredentials() {
+            const username = document.getElementById("username").value;       //чтение значений из localStorage
+            const password = document.getElementById("password").value;
+
+            localStorage.setItem("username", username);     //Запись значения в localStorage, где setItem(key, value), value - значение, которое нужно сохранить
+            localStorage.setItem("password", password);
+        }
+
+        // Функция автоматического заполнения учетных данных для входа из локального хранилища
+        function autofillCredentials() {
+            const username = localStorage.getItem("username");
+            const password = localStorage.getItem("password");
+
+            if (username && password) {
+                document.getElementById("username").value = username;
+                document.getElementById("password").value = password;
+            }
+        }
+
+        // Вызов функции для автозаполнения учетных данных при загрузке страницы
+        autofillCredentials();
+    </script>
+</body>
+
+</html>
